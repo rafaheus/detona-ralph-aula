@@ -10,7 +10,7 @@ const state = {
         gameVelocity: 1000,
         hitPosition: 0,
         result: 0,
-        currentTime: 60,
+        currentTime: 5,
     },
     actions: {
         countDowmTimerId: setInterval(countDown, 1000),
@@ -28,9 +28,10 @@ function countDown(){
     state.view.timeLeft.textContent = state.values.currentTime;
 
     if(state.values.currentTime <= 0) {
-        clearInterval(state.actions.countDownTimerId);
-        clearInterval(state.actions.countDown);
+        clearInterval(state.actions.countDowmTimerId);
+        clearInterval(state.actions.timerId);
         alert("Game Over! O seu resultado foi:" + state.values.result);
+        playSound("gameOver.wav");
     }
 }
 
